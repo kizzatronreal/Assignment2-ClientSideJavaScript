@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luke's Pizza Palace - Order Online</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>🍕 Luke's Pizza Palace</h1>
+    <p class="tagline">Hot, fresh, and made just for you.</p>
+  </header>
+
+  <main class="container">
+
+    <form id="pizzaForm" novalidate>
+      <h2>Build Your Order</h2>
+
+      <!-- Customer Name -->
+      <div class="form-group">
+        <label for="custName">Your Name</label>
+        <input type="text" id="custName" name="custName" placeholder="e.g. Jane Smith" required minlength="2" />
+        <span class="error-msg" id="custNameError"></span>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="form-group">
+        <label for="custPhone">Phone Number</label>
+        <input type="tel" id="custPhone" name="custPhone" placeholder="e.g. 0412345678" required pattern="^[0-9\-\+\s]{7,15}$" />
+        <span class="error-msg" id="custPhoneError"></span>
+      </div>
+
+      <!-- Pizza Size -->
+      <div class="form-group">
+        <label for="pizzaSize">Pizza Size</label>
+        <select id="pizzaSize" name="pizzaSize" required>
+          <option value="">-- Select Size --</option>
+          <option value="Small (10 inch)">Small (10")</option>
+          <option value="Medium (12 inch)">Medium (12")</option>
+          <option value="Large (14 inch)">Large (14")</option>
+          <option value="Family (18 inch)">Family (18")</option>
+        </select>
+        <span class="error-msg" id="pizzaSizeError"></span>
+      </div>
+
+      <!-- Crust Type -->
+      <div class="form-group">
+        <label>Crust Type</label>
+        <div class="radio-group">
+          <label><input type="radio" name="crust" value="Classic Hand-Tossed" required /> Classic Hand-Tossed</label>
+          <label><input type="radio" name="crust" value="Thin & Crispy" /> Thin & Crispy</label>
+          <label><input type="radio" name="crust" value="Deep Pan" /> Deep Pan</label>
+          <label><input type="radio" name="crust" value="Stuffed Crust" /> Stuffed Crust</label>
+        </div>
+        <span class="error-msg" id="crustError"></span>
+      </div>
+
+      <!-- Toppings -->
+      <div class="form-group">
+        <label>Toppings (choose any)</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="toppings" value="Pepperoni" /> Pepperoni</label>
+          <label><input type="checkbox" name="toppings" value="Mushrooms" /> Mushrooms</label>
+          <label><input type="checkbox" name="toppings" value="Extra Cheese" /> Extra Cheese</label>
+          <label><input type="checkbox" name="toppings" value="Olives" /> Olives</label>
+          <label><input type="checkbox" name="toppings" value="Onions" /> Onions</label>
+          <label><input type="checkbox" name="toppings" value="Bacon" /> Bacon</label>
+          <label><input type="checkbox" name="toppings" value="Pineapple" /> Pineapple</label>
+          <label><input type="checkbox" name="toppings" value="Jalapenos" /> Jalapeños</label>
+        </div>
+      </div>
+
+      <!-- Quantity -->
+      <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="10" value="1" required />
+        <span class="error-msg" id="quantityError"></span>
+      </div>
+
+      <!-- Spice Level -->
+      <div class="form-group">
+        <label for="spiceLevel">Spice Level</label>
+        <input type="range" id="spiceLevel" name="spiceLevel" min="0" max="5" value="1" />
+        <span id="spiceLevelValue">1</span> / 5
+      </div>
+
+      <!-- Delivery or Pickup -->
+      <div class="form-group">
+        <label for="orderType">Order Type</label>
+        <select id="orderType" name="orderType" required>
+          <option value="">-- Select --</option>
+          <option value="Delivery">Delivery</option>
+          <option value="Pickup">Pickup</option>
+        </select>
+        <span class="error-msg" id="orderTypeError"></span>
+      </div>
+
+      <!-- Delivery Address -->
+      <div class="form-group" id="addressGroup">
+        <label for="address">Delivery Address</label>
+        <textarea id="address" name="address" rows="2" placeholder="Required for delivery orders"></textarea>
+        <span class="error-msg" id="addressError"></span>
+      </div>
+
+      <!-- Special Instructions -->
+      <div class="form-group">
+        <label for="instructions">Special Instructions</label>
+        <textarea id="instructions" name="instructions" rows="2" placeholder="e.g. light on the sauce, cut into squares..."></textarea>
+      </div>
+
+      <button type="submit" id="orderBtn">Order Now</button>
+    </form>
+
+    <section id="orderOutput" class="order-output hidden">
+      <h2>Order Confirmation</h2>
+      <p id="orderDescription"></p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p id="studentInfo"></p>
+  </footer>
+
+</body>
+</html>
